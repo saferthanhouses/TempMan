@@ -1,0 +1,24 @@
+{
+  "name": "fe-generators",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsc -w"
+  },
+  "bin": {
+    "generator": "./bin/cli"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.12.14",
+    "jest": "^24.9.0",
+    "typescript": "^3.7.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "ts-jest": "^24.2.0"
+  }
+}
