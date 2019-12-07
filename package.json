@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "export NODE_ENV=dev && jest --watch",
     "dev": "nodemon -w src/ -e ts -x \"tsc && ./bin/cli\""
   },
   "bin": {
