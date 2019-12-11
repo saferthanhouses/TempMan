@@ -1,11 +1,12 @@
 {
-  "name": "fe-generators",
+  "name": "temp-man",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "export NODE_ENV=dev && jest --watch",
-    "dev": "nodemon -w src/ -e ts -x \"tsc && ./bin/cli\""
+    "dev": "nodemon -w src/ -e ts -x \"tsc && ./bin/cli\"",
+    "once": "tsc && ./bin/cli component ComponentName  ./src"
   },
   "bin": {
     "generator": "./bin/cli"
@@ -16,7 +17,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^12.12.14",
+    "@types/node": "^12.12.17",
+    "eventemitter3": "^4.0.0",
     "jest": "^24.9.0",
     "typescript": "^3.7.3"
   },

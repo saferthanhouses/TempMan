@@ -1,4 +1,4 @@
-import {parseCommandLineArgs} from "../src/cli";
+import {parseCommandLineArgs} from "index.ts";
 
 
 
