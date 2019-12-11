@@ -1,7 +1,7 @@
 import React from "react";
 import {View} from 'react-native'
 
-interface {#componentName}Props {}
+interface #{componentName}Props {}
 
 const styles = StyleSheet.create({
     {#componentName}: {
@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     }
 })
 
-export default function {#componentNam}(props: {#componentName}}Props){
+export default function #{componentName}(props: #{componentName}Props){
     return (
-        <View style={styles.#componentName}></View>
+        <View style={styles.#{componentName}}></View>
     )
 }
