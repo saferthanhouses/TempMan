@@ -1,13 +1,12 @@
 import {parseCommandLineArgs} from "./cli";
+import {TemplateLoader} from "./lib/TemplateLoader";
 
-(function main(){
+(async function main(){
     let args = process.argv.slice(2);
     let {name, data, dest} = parseCommandLineArgs(args);
     try {
-        console.log("generating component")
-        // let template = loadTemplate(name);
-        // let generatedCopy = template.load(data);
-        // writeTemplateToDestination(template);
+        let changeMap = await (new TemplateLoader(name)).once(TemplateLoader.LOADED);
+        console.log({changeMap})
     } catch (err){
         console.log(err);
         process.exit(1);

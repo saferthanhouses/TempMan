@@ -2,7 +2,7 @@ import {VariableMatch} from "VariableMatch";
 
 const variableRegexp = /(\#\{(\w+)\})/gi;
 
-export default function findVariablesIn(str: string) : VariableMatch[] {
+export function findVariablesIn(str: string) : VariableMatch[] {
     let match;
     let matches : VariableMatch[] = [];
     do {
