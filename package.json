@@ -1,7 +1,7 @@
 {
   "name": "tempman",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A template manager for easily generating and creating custom templates",
   "main": "index.js",
   "scripts": {
     "test": "export NODE_ENV=dev && jest --watch",
@@ -9,12 +9,12 @@
     "once": "tsc && ./bin/cli component ComponentName ./target"
   },
   "bin": {
-    "generator": "./bin/cli"
+    "tempman": "./bin/cli"
   },
   "jest": {
     "preset": "ts-jest"
   },
-  "author": "",
+  "author": "Joe Oliver",
   "license": "ISC",
   "dependencies": {
     "@types/node": "^12.12.17",
