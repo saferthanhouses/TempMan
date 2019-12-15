@@ -1,4 +1,4 @@
-import {VariableMatch} from "VariableMatch";
+import {VariableMatch} from "../lib/types";
 
 const variableRegexp = /(\#\{(\w+)\})/gi;
 
