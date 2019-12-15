@@ -1,13 +1,13 @@
 
 
 #### Installation
-`npm i --g domio-generators` 
+`npm i --g tempman` 
 
 
 #### Usage
 
-`npx domio-generators create component MyComponent`
-`npx domio-generators create redux users`
+`npx tempman create component MyComponent`
+`npx tempman create redux users`
 
 #####
 
