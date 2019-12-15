@@ -1,4 +1,4 @@
-import {createPathLike, mkDirDeep, promisifiedNcp} from "../utils/files";
+import {createPathLike, mkDirDeep, promisifiedNcp, rmDirDeep} from "../utils/files";
 
 import {TEMPLATE_DIR, TEMPORARY_DIR} from "../config";
 import {readdirSync, mkdirSync} from "fs";
@@ -25,10 +25,10 @@ export default async function generateTemplateInstance(tempName: string, data: D
         const normalizedChangeMap = normalizePaths(TEMPLATE_DIR, changeMap);
 
         data = validate(data, varNames);
-        await replaceVars(normalizedChangeMap, data)
+        await replaceVars(normalizedChangeMap, data);
 
-        await promisifiedNcp(tempDir, dest)
-
+        await promisifiedNcp(tempDir, dest);
+        await rmDirDeep(TEMPORARY_DIR);
     } catch(err){
         console.log("error", err.message);
         process.exit(0)

@@ -1,4 +1,15 @@
-import {PathLike, exists, mkdir, writeFile, createReadStream, createWriteStream} from "fs";
+import {
+    PathLike,
+    exists,
+    mkdir,
+    writeFile,
+    createReadStream,
+    createWriteStream,
+    rmdir,
+    readdir,
+    lstat,
+    unlink
+} from "fs";
 import * as p from  'path'
 import {promisify} from "util";
 import * as path from "path";
@@ -6,13 +17,34 @@ import ncp from "ncp";
 
 const doesExist = promisify(exists);
 const mkDir = promisify(mkdir);
+const readDir = promisify(readdir)
 const writeFilePromisified = promisify(writeFile);
+const rmDirPromisified = promisify(rmdir);
+const lStat = promisify(lstat);
+const unLink = promisify(unlink);
 
 export async function mkDirDeep(path: PathLike){
     let parsedPath = p.parse(path.toString());
     let exists = await doesExist(parsedPath.dir);
     if (!exists){
         await mkDir(parsedPath.dir, { recursive: true });
+    }
+}
+
+export async function rmDirDeep(path: PathLike){
+    let exists = await doesExist(path);
+    if( exists ) {
+        let contents = await readDir(path);
+        await Promise.all(contents.map(async (file,index) =>{
+            let curPath = p.join(path.toString(), file);
+            let isDir = (await lStat(curPath)).isDirectory();
+            if(isDir) { // recurse
+                await rmDirDeep(curPath);
+            } else { // delete file
+                await unLink(curPath);
+            }
+        }));
+        await rmDirPromisified(path)
     }
 }
 
