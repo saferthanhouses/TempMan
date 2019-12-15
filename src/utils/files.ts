@@ -8,13 +8,16 @@ const doesExist = promisify(exists);
 const mkDir = promisify(mkdir);
 const writeFilePromisified = promisify(writeFile);
 
-export async function writeFileDeep(path : PathLike, file : string){
+export async function mkDirDeep(path: PathLike){
     let parsedPath = p.parse(path.toString());
     let exists = await doesExist(parsedPath.dir);
     if (!exists){
         await mkDir(parsedPath.dir, { recursive: true });
     }
+}
 
+export async function writeFileDeep(path : PathLike, file : string){
+    await mkDirDeep(path)
     await writeFilePromisified(path, file, { encoding: "utf-8" });
 }
 
@@ -37,8 +40,11 @@ export function promisifiedCopyFileStream(filePath: string, dest: string){
 
 export function promisifiedNcp(source: string, dest: string){
     return new Promise((resolve, reject) =>  {
-        ncp(source, dest, (err)=>{
-            if (err) reject(err)
+        ncp(source, dest, {stopOnErr: true}, (err)=>{
+            if (err) {
+                console.log({err});
+                reject(err)
+            }
             resolve();
         })
     })

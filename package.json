@@ -6,7 +6,7 @@
   "scripts": {
     "test": "export NODE_ENV=dev && jest --watch",
     "dev": "nodemon -w src/ -e ts -x \"tsc && ./bin/cli\"",
-    "once": "tsc && ./bin/cli component ComponentName  ./src"
+    "once": "tsc && ./bin/cli component ComponentName ./target"
   },
   "bin": {
     "generator": "./bin/cli"
@@ -27,5 +27,6 @@
     "@types/jest": "^24.0.23",
     "@types/ncp": "^2.0.3",
     "ts-jest": "^24.2.0"
+
   }
 }

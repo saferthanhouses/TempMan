@@ -4,7 +4,7 @@ import {View} from 'react-native'
 interface #{componentName}Props {}
 
 const styles = StyleSheet.create({
-    {#componentName}: {
+    #{componentName}: {
         flex: 1
     }
 })

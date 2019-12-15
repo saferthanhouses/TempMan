@@ -29,7 +29,7 @@ async function makeChangesAtPath(changePath: string, changes: Change[], data:{[k
 
     if (nameChanges.length){
         nameChanges.forEach((varName) => {
-            newPath = newPath.replace(`#{${varName}`, data[varName]);
+            newPath = newPath.replace(`#{${varName}}`, data[varName]);
         });
         await renamePromisified(fPath, newPath)
     }
