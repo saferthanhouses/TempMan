@@ -20,10 +20,12 @@
     "@types/node": "^12.12.17",
     "eventemitter3": "^4.0.0",
     "jest": "^24.9.0",
-    "typescript": "^3.7.3"
+    "typescript": "^3.7.3",
+    "ncp": "latest"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
+    "@types/ncp": "^2.0.3",
     "ts-jest": "^24.2.0"
   }
 }
